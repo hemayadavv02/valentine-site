@@ -21,13 +21,14 @@ body {
     padding: 40px 20px;
     min-height: 100vh;
     position: relative;
+    transition: all 0.6s ease;
 }
 
-h1 {
+.page h1 {
     font-size: 28px;
 }
 
-p {
+.page p {
     font-size: 18px;
     margin: 20px 0;
 }
@@ -41,7 +42,7 @@ img {
 }
 
 button {
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 12px 25px;
     font-size: 16px;
     background-color: #ff69b4;
@@ -70,31 +71,35 @@ button:hover {
 
 <body>
 
-<!-- Hidden Music -->
-<iframe id="musicFrame"
-    width="0"
-    height="0"
-    style="position:absolute; pointer-events:none;"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-</iframe>
-
-
+<!-- Background Music (hidden) -->
+<audio id="bgMusic" loop>
+    <source src="love_theme.mp3" type="audio/mpeg">
+</audio>
 
 <!-- OPENING PAGE -->
 <div class="page" id="page0" style="display:block;">
     <h1>Our Journey Together 💖</h1>
-    <p>We have been together for</p>
-    <h1 id="daysCount"></h1>
-    <p>and counting... 💕</p>
-    <button onclick="nextPage()">Start Our Story ➜</button>
+    
+    <p style="font-size:18px; margin-top:20px;">
+        From the moment we started chatting on June 12, 2023, I knew my life was changing forever ✨💌 Every day with you is my favorite day 💕
+    </p>
+
+    <!-- JioSaavn Button at Start -->
+    <button onclick="window.open('https://www.jiosaavn.com/song/i-think-they-call-this-love-cover/KV4ZCQIFb0Y', '_blank')">
+        Play Our Song 🎵
+    </button>
+
+    <p style="font-size:16px; margin-top:20px;">
+        We have been together for <span id="daysCount"></span> and counting... 💖
+    </p>
+
+    <button onclick="startStory()">Start Our Story ➜</button>
 </div>
 
 <!-- PAGE 1 -->
 <div class="page" id="page1">
     <h1>June 12, 2023 💌</h1>
-    <p>The night our story began... Our first spark ✨</p>
+    <p>The night our story began… Our first spark ✨ Every word you said made my heart skip 💖</p>
     <img src="june12.jpg.jpeg">
     <br>
     <button onclick="nextPage()">Next ➜</button>
@@ -103,32 +108,32 @@ button:hover {
 <!-- PAGE 2 -->
 <div class="page" id="page2">
     <h1>After A Long Struggle 💞</h1>
-    <p>Your efforts and patience won my heart ❤️</p>
+    <p>Your patience, your kindness, your love… it all won my heart ❤️ I am grateful for every effort you made 🥰</p>
     <button onclick="nextPage()">Next ➜</button>
 </div>
 
 <!-- PAGE 3 -->
 <div class="page" id="page3">
     <h1>June 18, 2024 💍</h1>
-    <p>The day we officially became us 💖</p>
+    <p>The day we officially became us 💖 Every smile, every laugh with you feels like magic ✨</p>
     <img src="june18.jpg.jpeg">
     <br>
     <button onclick="nextPage()">Next ➜</button>
 </div>
 
 <!-- PAGE 4 -->
-<!-- PAGE 4 -->
 <div class="page" id="page4">
     <h1>Happy Valentine's Day ❤️</h1>
-    <p>No distance can ever reduce my love for you 💕</p>
+    <p style="font-size:18px; margin:20px 0; color:#d1487a;">
+        No distance can ever reduce my love for you. Every moment with you is a treasure, and I want to create countless more memories together 💕
+    </p>
 
-    <!-- Play Song Button -->
+    <!-- Optional: Additional Play Song Button -->
     <button onclick="window.open('https://www.jiosaavn.com/song/i-think-they-call-this-love-cover/KV4ZCQIFb0Y', '_blank')">
         Play Our Song 🎵
     </button>
 
     <br><br>
-
     <button onclick="nextPage()">Next ➜</button>
 </div>
 
@@ -136,11 +141,13 @@ button:hover {
 <div class="page" id="page5">
     <h1>Will You Be My Valentine? 💖</h1>
 
+    <p style="font-size:18px; margin-top:40px; color:#ff4f91; line-height:1.5;">
+        Every heartbeat whispers your name… I can’t imagine my life without you 🥰 Will you be my Valentine forever? 💖💌
+    </p>
+
     <button class="yesBtn" onclick="sayYes()">Yes 💕</button>
 
-    <button id="noBtn"
-    onmouseover="moveButton()"
-    ontouchstart="moveButton()">
+    <button id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">
         No 😜
     </button>
 
@@ -154,45 +161,34 @@ let currentPage = 0;
 let startDate = new Date("June 18, 2024");
 let today = new Date();
 let difference = today - startDate;
-let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+let days = Math.floor(difference / (1000*60*60*24));
 document.getElementById("daysCount").innerText = days + " Days 💕";
+
+// Start story: show first page + play music
+function startStory() {
+    document.getElementById("bgMusic").play();
+    nextPage();
+}
 
 function nextPage() {
     document.getElementById("page" + currentPage).style.display = "none";
     currentPage++;
     document.getElementById("page" + currentPage).style.display = "block";
-
-    // Start music on first click
-    if (currentPage === 1) {
-        document.getElementById("musicFrame").src =
-        "https://www.youtube.com/embed/e1mOmdykmwI?autoplay=1&mute=1&loop=1&playlist=e1mOmdykmwI";
-    }
 }
 
 function sayYes() {
-    document.getElementById("response").innerHTML =
+    document.getElementById("response").innerHTML = 
     "Yayyyy 😭💖 I love you so much! Forever us ❤️";
 }
 
 function moveButton() {
     let button = document.getElementById("noBtn");
-    let x = Math.floor(Math.random() * 250);
-    let y = Math.floor(Math.random() * 300);
+    let x = Math.floor(Math.random()*250);
+    let y = Math.floor(Math.random()*300);
     button.style.left = x + "px";
     button.style.top = y + "px";
 }
 </script>
 
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
