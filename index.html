@@ -71,8 +71,8 @@ button:hover {
 <body>
 
 <!-- Hidden Music -->
-<audio id="bgMusic" controls loop>
-  <source src="perfect.mp3" type="audio/mpeg">
+<audio id="bgMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 
@@ -148,8 +148,7 @@ function nextPage() {
     document.getElementById("page" + currentPage).style.display = "block";
     //start music on first click
     if (currentPage === 1){
-        var music = document.getElementById("bgMusic");
-        music.play();
+        document.getElementById("bgMusic").play();
     }
 }
 
@@ -169,6 +168,7 @@ function moveButton() {
 
 </body>
 </html>
+
 
 
 
