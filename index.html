@@ -71,10 +71,13 @@ button:hover {
 <body>
 
 <!-- Hidden Music -->
-<audio id="bgMusic" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
+<iframe id="musicFrame"
+    width="0" height="0"
+    src=""
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+</iframe>
 
 <!-- OPENING PAGE -->
 <div class="page" id="page0" style="display:block;">
@@ -147,9 +150,10 @@ function nextPage() {
     currentPage++;
     document.getElementById("page" + currentPage).style.display = "block";
     //start music on first click
-    if (currentPage === 1){
-        document.getElementById("bgMusic").play();
-    }
+   if (currentPage === 1) {
+    document.getElementById("musicFrame").src =
+    "https://www.youtube.com/embed/e1mOmdykmwI?autoplay=1&loop=1&playlist=e1mOmdykmwI";
+}
 }
 
 function sayYes() {
@@ -168,6 +172,7 @@ function moveButton() {
 
 </body>
 </html>
+
 
 
 
