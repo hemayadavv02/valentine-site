@@ -71,7 +71,9 @@ button:hover {
 <body>
 
 <!-- Hidden Music -->
-<audio id="bgMusic" src="perfect.mp3" autoplay loop></audio>
+<audio id="bgMusic" controls loop>
+  <source src="perfect.mp3" type="audio/mpeg">
+</audio>
 
 
 <!-- OPENING PAGE -->
@@ -146,7 +148,7 @@ function nextPage() {
     document.getElementById("page" + currentPage).style.display = "block";
     //start music on first click
     if (currentPage === 1){
-        let music = document.getElementById("bgMusic");
+        var music = document.getElementById("bgMusic");
         music.play();
     }
 }
@@ -167,5 +169,6 @@ function moveButton() {
 
 </body>
 </html>
+
 
 
