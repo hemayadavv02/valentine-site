@@ -87,7 +87,7 @@ button:hover {
 <div class="page" id="page1">
     <h1>June 12, 2023 💌</h1>
     <p>The night our story began... Our first spark ✨</p>
-    <img src="june12.jpg">
+    <img src="june12.jpg.jpeg">
     <br>
     <button onclick="nextPage()">Next ➜</button>
 </div>
@@ -103,7 +103,7 @@ button:hover {
 <div class="page" id="page3">
     <h1>June 18, 2024 💍</h1>
     <p>The day we officially became us 💖</p>
-    <img src="june18.jpg">
+    <img src="june18.jpg.jpeg">
     <br>
     <button onclick="nextPage()">Next ➜</button>
 </div>
@@ -141,6 +141,7 @@ let days = Math.floor(difference / (1000 * 60 * 60 * 24));
 document.getElementById("daysCount").innerText = days + " Days 💕";
 
 function nextPage() {
+    document.getElementById("music").play();
     document.getElementById("page" + currentPage).style.display = "none";
     currentPage++;
     document.getElementById("page" + currentPage).style.display = "block";
@@ -163,3 +164,4 @@ function moveButton() {
 
 </body>
 </html>
+
