@@ -71,7 +71,7 @@ button:hover {
 <body>
 
 <!-- Hidden Music -->
-<audio id="music" src="perfect.mp3" autoplay loop></audio>
+<audio id="bgMusic" src="perfect.mp3" autoplay loop></audio>
 
 
 <!-- OPENING PAGE -->
@@ -141,11 +141,14 @@ let days = Math.floor(difference / (1000 * 60 * 60 * 24));
 document.getElementById("daysCount").innerText = days + " Days 💕";
 
 function nextPage() {
-    document.getElementById("music").play();
     document.getElementById("page" + currentPage).style.display = "none";
     currentPage++;
     document.getElementById("page" + currentPage).style.display = "block";
-
+    //start music on first click
+    if (currentPage === 1){
+        let music = document.getElementById("bgMusic");
+        music.play();
+    }
 }
 
 function sayYes() {
@@ -164,4 +167,5 @@ function moveButton() {
 
 </body>
 </html>
+
 
