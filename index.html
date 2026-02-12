@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Love Story 💕</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #ffc0cb, #ffe4e1);
+    text-align: center;
+    color: #8b004f;
+    overflow-x: hidden;
+}
+
+.page {
+    display: none;
+    padding: 40px 20px;
+    min-height: 100vh;
+    position: relative;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+p {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+img {
+    width: 85%;
+    max-width: 300px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+button {
+    margin-top: 30px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #ff69b4;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ff1493;
+}
+
+.yesBtn {
+    background-color: #ff1493;
+    font-size: 18px;
+    padding: 15px 35px;
+}
+
+#noBtn {
+    position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Hidden Music -->
+<audio id="music" src="perfect.mp3" autoplay loop></audio>
+
+
+<!-- OPENING PAGE -->
+<div class="page" id="page0" style="display:block;">
+    <h1>Our Journey Together 💖</h1>
+    <p>We have been together for</p>
+    <h1 id="daysCount"></h1>
+    <p>and counting... 💕</p>
+    <button onclick="nextPage()">Start Our Story ➜</button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+    <h1>June 12, 2023 💌</h1>
+    <p>The night our story began... Our first spark ✨</p>
+    <img src="june12.jpg">
+    <br>
+    <button onclick="nextPage()">Next ➜</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>After A Long Struggle 💞</h1>
+    <p>Your efforts and patience won my heart ❤️</p>
+    <button onclick="nextPage()">Next ➜</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>June 18, 2024 💍</h1>
+    <p>The day we officially became us 💖</p>
+    <img src="june18.jpg">
+    <br>
+    <button onclick="nextPage()">Next ➜</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+    <h1>Happy Valentine's Day ❤️</h1>
+    <p>No distance can ever reduce my love for you 💕</p>
+    <button onclick="nextPage()">Next ➜</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+    <h1>Will You Be My Valentine? 💖</h1>
+
+    <button class="yesBtn" onclick="sayYes()">Yes 💕</button>
+
+    <button id="noBtn"
+    onmouseover="moveButton()"
+    ontouchstart="moveButton()">
+        No 😜
+    </button>
+
+    <p id="response" style="margin-top:60px; font-size:20px;"></p>
+</div>
+
+<script>
+let currentPage = 0;
+
+// Days counter from June 18, 2024
+let startDate = new Date("June 18, 2024");
+let today = new Date();
+let difference = today - startDate;
+let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+document.getElementById("daysCount").innerText = days + " Days 💕";
+
+function nextPage() {
+    document.getElementById("page" + currentPage).style.display = "none";
+    currentPage++;
+    document.getElementById("page" + currentPage).style.display = "block";
+
+}
+
+function sayYes() {
+    document.getElementById("response").innerHTML =
+    "Yayyyy 😭💖 I love you so much! Forever us ❤️";
+}
+
+function moveButton() {
+    let button = document.getElementById("noBtn");
+    let x = Math.floor(Math.random() * 250);
+    let y = Math.floor(Math.random() * 300);
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
